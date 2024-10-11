@@ -1,0 +1,7 @@
+
+TITLE Plantilla: Equilibrio entre el agua y el CO2.
+SOLUTION 1
+temp      25
+EQUILIBRIUM_PHASES
+Halite 0 10            
+END
