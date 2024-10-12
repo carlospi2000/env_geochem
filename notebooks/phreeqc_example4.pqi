@@ -1,8 +1,0 @@
-
-TITLE calcite solubility 
-SOLUTION 1 pure water & calcite
-pH 7
-temp 25
-EQUILIBRIUM_PHASES
-Calcite 0.0 1
-END
