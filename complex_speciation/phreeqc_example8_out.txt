@@ -1,0 +1,223 @@
+   Input file: phreeqc_example8.pqi
+  Output file: phreeqc_example8_out.txt
+Database file: /srv/data/phreeqc-3.7.3-15968/database/phreeqc.dat
+
+------------------
+Reading data base.
+------------------
+
+	SOLUTION_MASTER_SPECIES
+	SOLUTION_SPECIES
+	PHASES
+	EXCHANGE_MASTER_SPECIES
+	EXCHANGE_SPECIES
+	SURFACE_MASTER_SPECIES
+	SURFACE_SPECIES
+	RATES
+	END
+------------------------------------
+Reading input data for simulation 1.
+------------------------------------
+
+	SOLUTION 1
+	    temp      25         # Temperature in degrees Celsius
+	    pH        8.0        # Assumed pH, adjust if a specific pH is provided
+	    pe        4.0        # Assumed pe, adjust if needed
+	    units     mol/kgw
+	    Alkalinity  1e-3 as HCO3      # Concentration of HCO3- (10^-3 M)
+	    C(+4)       1e-5       # Concentration of CO3^2- (10^-5 M)
+	    S(6)        1e-5       # Concentration of SO4^2- (10^-2 M)
+	    Ca         0.0
+	EQUILIBRIUM_PHASES 
+	    Calcite   0  10.0        # Calcite at saturation (SI = 0)
+	    CO2(g)    -3.5
+	SOLUTION_SPECIES
+	Ca+2 + CO3-2 = CaCO3
+	    log_k     -8.5
+	Ca+2 + SO4-2 = CaSO4
+	    log_k     2.3        # Log K for CaSO4^0
+	Ca+2 + HCO3- = CaHCO3+
+	    log_k     1.1        # Log K for CaHCO3+    
+	END
+-------------------------------------------
+Beginning of initial solution calculations.
+-------------------------------------------
+
+Initial solution 1.	
+
+
+pH will be adjusted to obtain desired alkalinity.
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Alkalinity        1.000e-03   1.000e-03
+	C(4)              1.000e-05   1.000e-05
+	S(6)              1.000e-05   1.000e-05
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =  10.975      Adjust alkalinity
+                                       pe  =   4.000    
+      Specific Conductance (µS/cm,  25°C)  = 195
+                          Density (g/cm³)  =   0.99707
+                               Volume (L)  =   1.00296
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   5.283e-04
+                       Mass of water (kg)  =   1.000e+00
+                       Total CO2 (mol/kg)  =   1.000e-05
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.020e-03
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  = -100.00
+                               Iterations  =  10
+                                  Total H  = 1.110134e+02
+                                  Total O  = 5.550727e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   OH-             9.817e-04   9.562e-04    -3.008    -3.019    -0.011     -4.12
+   H+              1.086e-11   1.058e-11   -10.964   -10.975    -0.011      0.00
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+C(4)          1.000e-05
+   CO3-2           8.273e-06   7.457e-06    -5.082    -5.127    -0.045     -5.31
+   HCO3-           1.727e-06   1.683e-06    -5.763    -5.774    -0.011     24.67
+   CO2             4.005e-11   4.006e-11   -10.397   -10.397     0.000     34.43
+   (CO2)2          2.945e-23   2.945e-23   -22.531   -22.531     0.000     68.87
+H(0)          1.586e-33
+   H2              7.930e-34   7.931e-34   -33.101   -33.101     0.000     28.61
+O(0)          1.325e-26
+   O2              6.626e-27   6.627e-27   -26.179   -26.179     0.000     30.40
+S(6)          1.000e-05
+   SO4-2           1.000e-05   9.011e-06    -5.000    -5.045    -0.045     14.48
+   HSO4-           9.520e-15   9.273e-15   -14.021   -14.033    -0.011     40.27
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  CO2(g)           -8.93    -10.40   -1.47  CO2
+  H2(g)           -30.00    -33.10   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  O2(g)           -23.29    -26.18   -2.89  O2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+-----------------------------------------
+Beginning of batch-reaction calculations.
+-----------------------------------------
+
+Reaction step 1.
+
+Using solution 1.	
+Using pure phase assemblage 1.	
+
+-------------------------------Phase assemblage--------------------------------
+
+                                                      Moles in assemblage
+Phase               SI  log IAP  log K(T, P)   Initial       Final       Delta
+
+CO2(g)           -3.50    -4.97     -1.47    1.000e+01   9.999e+00  -1.199e-03
+Calcite           0.00    -8.48     -8.48    1.000e+01   1.000e+01  -2.218e-04
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	C                 1.431e-03   1.431e-03
+	Ca                2.218e-04   2.218e-04
+	S                 1.000e-05   1.000e-05
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   8.448      Charge balance
+                                       pe  =  -2.997      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 88
+                          Density (g/cm³)  =   0.99711
+                               Volume (L)  =   1.00299
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.198e-03
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.444e-03
+                       Total CO2 (mol/kg)  =   1.431e-03
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.020e-03
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  = -53.70
+                               Iterations  =  22
+                                  Total H  = 1.110134e+02
+                                  Total O  = 5.551033e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   OH-             2.955e-06   2.842e-06    -5.529    -5.546    -0.017     -4.10
+   H+              3.696e-09   3.562e-09    -8.432    -8.448    -0.016      0.00
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+C(-4)         6.429e-25
+   CH4             6.429e-25   6.431e-25   -24.192   -24.192     0.000     35.46
+C(4)          1.431e-03
+   HCO3-           1.396e-03   1.344e-03    -2.855    -2.872    -0.017     24.69
+   CO3-2           2.062e-05   1.769e-05    -4.686    -4.752    -0.067     -5.26
+   CO2             1.076e-05   1.076e-05    -4.968    -4.968     0.000     34.43
+   CaHCO3+         3.292e-06   3.166e-06    -5.483    -5.499    -0.017     (0)  
+   (CO2)2          2.125e-12   2.125e-12   -11.673   -11.673     0.000     68.87
+   CaCO3           1.047e-17   1.047e-17   -16.980   -16.980     0.000     (0)  
+Ca            2.218e-04
+   Ca+2            2.182e-04   1.872e-04    -3.661    -3.728    -0.067    -18.13
+   CaHCO3+         3.292e-06   3.166e-06    -5.483    -5.499    -0.017     (0)  
+   CaSO4           3.102e-07   3.102e-07    -6.508    -6.508     0.000     (0)  
+   CaOH+           9.067e-09   8.721e-09    -8.043    -8.059    -0.017     (0)  
+   CaHSO4+         6.730e-15   6.473e-15   -14.172   -14.189    -0.017     (0)  
+   CaCO3           1.047e-17   1.047e-17   -16.980   -16.980     0.000     (0)  
+H(0)          1.768e-14
+   H2              8.839e-15   8.842e-15   -14.054   -14.053     0.000     28.61
+O(0)          0.000e+00
+   O2              0.000e+00   0.000e+00   -64.273   -64.273     0.000     30.40
+S(-2)         3.444e-24
+   HS-             3.344e-24   3.216e-24   -23.476   -23.493    -0.017     20.61
+   H2S             1.001e-25   1.001e-25   -25.000   -24.999     0.000     36.27
+   S-2             1.272e-28   1.090e-28   -27.896   -27.962    -0.067     (0)  
+   (H2S)2          0.000e+00   0.000e+00   -51.277   -51.277     0.000     30.09
+S(6)          1.000e-05
+   SO4-2           9.690e-06   8.307e-06    -5.014    -5.081    -0.067     14.52
+   CaSO4           3.102e-07   3.102e-07    -6.508    -6.508     0.000     (0)  
+   HSO4-           2.991e-12   2.877e-12   -11.524   -11.541    -0.017     40.28
+   CaHSO4+         6.730e-15   6.473e-15   -14.172   -14.189    -0.017     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Anhydrite        -4.53     -8.81   -4.28  CaSO4
+  Aragonite        -0.14     -8.48   -8.34  CaCO3
+  Calcite           0.00     -8.48   -8.48  CaCO3
+  CH4(g)          -21.39    -24.19   -2.80  CH4
+  CO2(g)           -3.50     -4.97   -1.47  CO2	 Pressure   0.0 atm, phi 1.000
+  Gypsum           -4.23     -8.81   -4.58  CaSO4:2H2O
+  H2(g)           -10.95    -14.05   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  H2S(g)          -24.00    -31.94   -7.94  H2S
+  O2(g)           -61.38    -64.27   -2.89  O2
+  Sulfur          -18.98    -14.10    4.88  S
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+------------------
+End of simulation.
+------------------
+
+------------------------------------
+Reading input data for simulation 2.
+------------------------------------
+
+----------------------------------
+End of Run after 0.016858 Seconds.
+----------------------------------
+

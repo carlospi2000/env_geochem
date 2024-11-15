@@ -1,0 +1,36 @@
+
+TITLE Mezcla de aguas (Mixing).
+SOLUTION 1  Agua dulce
+    temp      25
+    pH        7.10
+    units     mg/L
+    density   1.00
+    Ca        80
+    Mg        7.1
+    Na        14
+    K         3.3
+    Alkalinity 253. as HCO3
+    S(6)      1.8
+    Cl        34
+SAVE solution 1
+END
+SOLUTION 2  agua de mar
+    temp    25.0
+     pH      8.22
+    units    ppm
+    density   1.023
+    Ca       412.3
+    Mg       1291.8
+    Na       10768.0
+    K         399.1
+    Cl        19353.0
+    Alkalinity      141.682 as HCO3
+    S(6)            2712.0
+SAVE solution 2
+END
+TITLE Mezcla de las aguas: definición de las proporciones.
+MIX 1
+    1      0.9
+    2      0.1
+SAVE solution   3
+END

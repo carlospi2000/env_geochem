@@ -1,0 +1,27 @@
+
+SOLUTION 1
+    temp      25         # Temperature in degrees Celsius
+    pH        8.0        # Assumed pH, adjust if a specific pH is provided
+    pe        4.0        # Assumed pe, adjust if needed
+    units     mol/kgw
+    Alkalinity  1e-3 as HCO3      # Concentration of HCO3- (10^-3 M)
+    C(+4)       1e-5       # Concentration of CO3^2- (10^-5 M)
+    S(6)        1e-5       # Concentration of SO4^2- (10^-2 M)
+    Ca         0.0
+EQUILIBRIUM_PHASES 
+    Calcite   0  10.0        # Calcite at saturation (SI = 0)
+    CO2(g)    -3.5
+
+SOLUTION_SPECIES
+# Adding complexation reactions with their equilibrium constants
+Ca+2 + CO3-2 = CaCO3
+    log_k     -8.5
+
+Ca+2 + SO4-2 = CaSO4
+    log_k     2.3        # Log K for CaSO4^0
+
+Ca+2 + HCO3- = CaHCO3+
+    log_k     1.1        # Log K for CaHCO3+    
+    
+# Ensure that no custom species are defined unless absolutely necessary
+END

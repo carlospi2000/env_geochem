@@ -1,0 +1,1137 @@
+   Input file: phreeqc_example11.pqi
+  Output file: phreeqc_example11_out.txt
+Database file: /srv/data/phreeqc-3.7.3-15968/database/phreeqc.dat
+
+------------------
+Reading data base.
+------------------
+
+	SOLUTION_MASTER_SPECIES
+	SOLUTION_SPECIES
+	PHASES
+	EXCHANGE_MASTER_SPECIES
+	EXCHANGE_SPECIES
+	SURFACE_MASTER_SPECIES
+	SURFACE_SPECIES
+	RATES
+	END
+------------------------------------
+Reading input data for simulation 1.
+------------------------------------
+
+	RATES
+	 Quartz
+	 start
+	  1 A0 = parm(1)
+	  2 V = parm(2)
+	  10 rate = (A0 / V) * (m/m0)^0.67 * 10^-13.7 * (1 -  SR("Quartz"))
+	  20 save rate * time
+	 end
+	KINETICS
+	Quartz
+	 formula SiO2
+	 m0  158.8                        # initial moles of quartz
+	 parms 23.13  0.16
+	 time_steps 5 year in 15           # 15 time steps
+	INCREMENTAL_REACTIONS true
+	SOLUTION 1
+	USER_GRAPH
+	 -chart_title "Quartz dissolution"
+	 -axis_titles Years "mmol / L"
+	 -axis_scale x_axis 0 5
+	 -initial_solutions  true
+	 -start
+	 10 graph_x total_time / 3.1536e7  # time in years on x-axis
+	 20 graph_y tot("Si") * 1e3        # parameter on y-axis
+	 -end
+	END
+-------------------------------------------
+Beginning of initial solution calculations.
+-------------------------------------------
+
+Initial solution 1.	
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Pure water     
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   7.000    
+                                       pe  =   4.000    
+      Specific Conductance (µS/cm,  25°C)  = 0
+                          Density (g/cm³)  =   0.99704
+                               Volume (L)  =   1.00297
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.007e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.217e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.217e-09
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.60
+                               Iterations  =   0
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550622e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   OH-             1.013e-07   1.012e-07    -6.995    -6.995    -0.000     -4.14
+   H+              1.001e-07   1.000e-07    -7.000    -7.000    -0.000      0.00
+   H2O             5.551e+01   1.000e+00     1.744     0.000     0.000     18.07
+H(0)          1.416e-25
+   H2              7.079e-26   7.079e-26   -25.150   -25.150     0.000     28.61
+O(0)          0.000e+00
+   O2              0.000e+00   0.000e+00   -42.080   -42.080     0.000     30.40
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  H2(g)           -22.05    -25.15   -3.10  H2
+  H2O(g)           -1.50      0.00    1.50  H2O
+  O2(g)           -39.19    -42.08   -2.89  O2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+-----------------------------------------
+Beginning of batch-reaction calculations.
+-----------------------------------------
+
+Reaction step 1.
+
+Using solution 1.	
+Using kinetics 1.	
+
+Kinetics 1.	
+
+	Time step: 1.05192e+07 seconds  (Incremented time: 1.05192e+07 seconds)
+
+	Rate name       Delta Moles Total Moles   Reactant        Coefficient
+
+	Quartz           -2.634e-05   1.588e+02   SiO2                      1
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Si                2.634e-05   2.634e-05
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   6.929      Charge balance
+                                       pe  =  11.762      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 0
+                          Density (g/cm³)  =   0.99704
+                               Volume (L)  =   1.00297
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.184e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.217e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.217e-09
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.51
+                               Iterations  =  25
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550627e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   H+              1.178e-07   1.177e-07    -6.929    -6.929    -0.000      0.00
+   OH-             8.602e-08   8.598e-08    -7.065    -7.066    -0.000     -4.14
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+H(0)          0.000e+00
+   H2              0.000e+00   0.000e+00   -40.533   -40.533     0.000     28.61
+O(0)          9.695e-12
+   O2              4.847e-12   4.847e-12   -11.315   -11.315     0.000     30.40
+Si            2.634e-05
+   H4SiO4          2.631e-05   2.631e-05    -4.580    -4.580     0.000     52.08
+   H3SiO4-         3.297e-08   3.295e-08    -7.482    -7.482    -0.000     27.94
+   H2SiO4-2        1.907e-14   1.904e-14   -13.720   -13.720    -0.001     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Chalcedony       -1.03     -4.58   -3.55  SiO2
+  H2(g)           -37.43    -40.53   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  O2(g)            -8.42    -11.31   -2.89  O2
+  Quartz           -0.60     -4.58   -3.98  SiO2
+  SiO2(a)          -1.87     -4.58   -2.71  SiO2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+Reaction step 2.
+
+Using solution 1.	
+Using kinetics 1.	
+
+Kinetics 1.	
+
+	Time step: 1.05192e+07 seconds  (Incremented time: 2.10384e+07 seconds)
+
+	Rate name       Delta Moles Total Moles   Reactant        Coefficient
+
+	Quartz           -1.972e-05   1.588e+02   SiO2                      1
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Si                4.606e-05   4.606e-05
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   6.888      Charge balance
+                                       pe  =  11.803      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 0
+                          Density (g/cm³)  =   0.99705
+                               Volume (L)  =   1.00297
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.301e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.217e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.217e-09
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.47
+                               Iterations  =  24
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550631e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   H+              1.295e-07   1.294e-07    -6.888    -6.888    -0.000      0.00
+   OH-             7.824e-08   7.821e-08    -7.107    -7.107    -0.000     -4.14
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+H(0)          0.000e+00
+   H2              0.000e+00   0.000e+00   -40.533   -40.533     0.000     28.61
+O(0)          9.685e-12
+   O2              4.843e-12   4.843e-12   -11.315   -11.315     0.000     30.40
+Si            4.606e-05
+   H4SiO4          4.601e-05   4.601e-05    -4.337    -4.337     0.000     52.08
+   H3SiO4-         5.244e-08   5.242e-08    -7.280    -7.281    -0.000     27.94
+   H2SiO4-2        2.760e-14   2.755e-14   -13.559   -13.560    -0.001     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Chalcedony       -0.79     -4.34   -3.55  SiO2
+  H2(g)           -37.43    -40.53   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  O2(g)            -8.42    -11.31   -2.89  O2
+  Quartz           -0.36     -4.34   -3.98  SiO2
+  SiO2(a)          -1.63     -4.34   -2.71  SiO2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+Reaction step 3.
+
+Using solution 1.	
+Using kinetics 1.	
+
+Kinetics 1.	
+
+	Time step: 1.05192e+07 seconds  (Incremented time: 3.15576e+07 seconds)
+
+	Rate name       Delta Moles Total Moles   Reactant        Coefficient
+
+	Quartz           -1.476e-05   1.588e+02   SiO2                      1
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Si                6.082e-05   6.082e-05
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   6.862      Charge balance
+                                       pe  =  11.830      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 0
+                          Density (g/cm³)  =   0.99705
+                               Volume (L)  =   1.00297
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.382e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.217e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.217e-09
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.44
+                               Iterations  =  22
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550634e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   H+              1.376e-07   1.375e-07    -6.861    -6.862    -0.000      0.00
+   OH-             7.363e-08   7.360e-08    -7.133    -7.133    -0.000     -4.14
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+H(0)          0.000e+00
+   H2              0.000e+00   0.000e+00   -40.533   -40.533     0.000     28.61
+O(0)          9.686e-12
+   O2              4.843e-12   4.843e-12   -11.315   -11.315     0.000     30.40
+Si            6.082e-05
+   H4SiO4          6.075e-05   6.075e-05    -4.216    -4.216     0.000     52.08
+   H3SiO4-         6.517e-08   6.514e-08    -7.186    -7.186    -0.000     27.94
+   H2SiO4-2        3.228e-14   3.222e-14   -13.491   -13.492    -0.001     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Chalcedony       -0.67     -4.22   -3.55  SiO2
+  H2(g)           -37.43    -40.53   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  O2(g)            -8.42    -11.31   -2.89  O2
+  Quartz           -0.24     -4.22   -3.98  SiO2
+  SiO2(a)          -1.50     -4.22   -2.71  SiO2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+Reaction step 4.
+
+Using solution 1.	
+Using kinetics 1.	
+
+Kinetics 1.	
+
+	Time step: 1.05192e+07 seconds  (Incremented time: 4.20768e+07 seconds)
+
+	Rate name       Delta Moles Total Moles   Reactant        Coefficient
+
+	Quartz           -1.104e-05   1.588e+02   SiO2                      1
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Si                7.186e-05   7.186e-05
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   6.844      Charge balance
+                                       pe  =  11.848      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 0
+                          Density (g/cm³)  =   0.99705
+                               Volume (L)  =   1.00297
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.440e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.217e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.217e-09
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.42
+                               Iterations  =  18
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550636e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   H+              1.434e-07   1.433e-07    -6.844    -6.844    -0.000      0.00
+   OH-             7.067e-08   7.064e-08    -7.151    -7.151    -0.000     -4.14
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+H(0)          0.000e+00
+   H2              0.000e+00   0.000e+00   -40.533   -40.533     0.000     28.61
+O(0)          9.687e-12
+   O2              4.843e-12   4.843e-12   -11.315   -11.315     0.000     30.40
+Si            7.186e-05
+   H4SiO4          7.179e-05   7.179e-05    -4.144    -4.144     0.000     52.08
+   H3SiO4-         7.390e-08   7.387e-08    -7.131    -7.132    -0.000     27.94
+   H2SiO4-2        3.513e-14   3.507e-14   -13.454   -13.455    -0.001     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Chalcedony       -0.59     -4.14   -3.55  SiO2
+  H2(g)           -37.43    -40.53   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  O2(g)            -8.42    -11.31   -2.89  O2
+  Quartz           -0.16     -4.14   -3.98  SiO2
+  SiO2(a)          -1.43     -4.14   -2.71  SiO2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+Reaction step 5.
+
+Using solution 1.	
+Using kinetics 1.	
+
+Kinetics 1.	
+
+	Time step: 1.05192e+07 seconds  (Incremented time: 5.2596e+07 seconds)
+
+	Rate name       Delta Moles Total Moles   Reactant        Coefficient
+
+	Quartz           -8.266e-06   1.588e+02   SiO2                      1
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Si                8.013e-05   8.013e-05
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   6.831      Charge balance
+                                       pe  =  11.860      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 0
+                          Density (g/cm³)  =   0.99705
+                               Volume (L)  =   1.00297
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.481e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.217e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.217e-09
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.41
+                               Iterations  =  18
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550638e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   H+              1.475e-07   1.475e-07    -6.831    -6.831    -0.000      0.00
+   OH-             6.867e-08   6.864e-08    -7.163    -7.163    -0.000     -4.14
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+H(0)          0.000e+00
+   H2              0.000e+00   0.000e+00   -40.533   -40.533     0.000     28.61
+O(0)          9.689e-12
+   O2              4.844e-12   4.844e-12   -11.315   -11.315     0.000     30.40
+Si            8.013e-05
+   H4SiO4          8.005e-05   8.005e-05    -4.097    -4.097     0.000     52.08
+   H3SiO4-         8.008e-08   8.004e-08    -7.096    -7.097    -0.000     27.94
+   H2SiO4-2        3.699e-14   3.692e-14   -13.432   -13.433    -0.001     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Chalcedony       -0.55     -4.10   -3.55  SiO2
+  H2(g)           -37.43    -40.53   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  O2(g)            -8.42    -11.31   -2.89  O2
+  Quartz           -0.12     -4.10   -3.98  SiO2
+  SiO2(a)          -1.38     -4.10   -2.71  SiO2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+Reaction step 6.
+
+Using solution 1.	
+Using kinetics 1.	
+
+Kinetics 1.	
+
+	Time step: 1.05192e+07 seconds  (Incremented time: 6.31152e+07 seconds)
+
+	Rate name       Delta Moles Total Moles   Reactant        Coefficient
+
+	Quartz           -6.186e-06   1.588e+02   SiO2                      1
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Si                8.631e-05   8.631e-05
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   6.822      Charge balance
+                                       pe  =  11.869      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 0
+                          Density (g/cm³)  =   0.99705
+                               Volume (L)  =   1.00297
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.512e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.217e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.217e-09
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.40
+                               Iterations  =  18
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550639e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   H+              1.506e-07   1.505e-07    -6.822    -6.822    -0.000      0.00
+   OH-             6.728e-08   6.725e-08    -7.172    -7.172    -0.000     -4.14
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+H(0)          0.000e+00
+   H2              0.000e+00   0.000e+00   -40.532   -40.532     0.000     28.61
+O(0)          9.681e-12
+   O2              4.840e-12   4.840e-12   -11.315   -11.315     0.000     30.40
+Si            8.631e-05
+   H4SiO4          8.623e-05   8.623e-05    -4.064    -4.064     0.000     52.08
+   H3SiO4-         8.451e-08   8.448e-08    -7.073    -7.073    -0.000     27.94
+   H2SiO4-2        3.825e-14   3.818e-14   -13.417   -13.418    -0.001     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Chalcedony       -0.51     -4.06   -3.55  SiO2
+  H2(g)           -37.43    -40.53   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  O2(g)            -8.42    -11.32   -2.89  O2
+  Quartz           -0.08     -4.06   -3.98  SiO2
+  SiO2(a)          -1.35     -4.06   -2.71  SiO2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+Reaction step 7.
+
+Using solution 1.	
+Using kinetics 1.	
+
+Kinetics 1.	
+
+	Time step: 1.05192e+07 seconds  (Incremented time: 7.36344e+07 seconds)
+
+	Rate name       Delta Moles Total Moles   Reactant        Coefficient
+
+	Quartz           -4.629e-06   1.588e+02   SiO2                      1
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Si                9.094e-05   9.094e-05
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   6.816      Charge balance
+                                       pe  =  11.875      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 0
+                          Density (g/cm³)  =   0.99705
+                               Volume (L)  =   1.00297
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.534e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.217e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.217e-09
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.40
+                               Iterations  =  17
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550640e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   H+              1.528e-07   1.527e-07    -6.816    -6.816    -0.000      0.00
+   OH-             6.629e-08   6.626e-08    -7.179    -7.179    -0.000     -4.14
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+H(0)          0.000e+00
+   H2              0.000e+00   0.000e+00   -40.532   -40.532     0.000     28.61
+O(0)          9.682e-12
+   O2              4.841e-12   4.841e-12   -11.315   -11.315     0.000     30.40
+Si            9.094e-05
+   H4SiO4          9.085e-05   9.085e-05    -4.042    -4.042     0.000     52.08
+   H3SiO4-         8.774e-08   8.770e-08    -7.057    -7.057    -0.000     27.94
+   H2SiO4-2        3.913e-14   3.906e-14   -13.408   -13.408    -0.001     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Chalcedony       -0.49     -4.04   -3.55  SiO2
+  H2(g)           -37.43    -40.53   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  O2(g)            -8.42    -11.32   -2.89  O2
+  Quartz           -0.06     -4.04   -3.98  SiO2
+  SiO2(a)          -1.33     -4.04   -2.71  SiO2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+Reaction step 8.
+
+Using solution 1.	
+Using kinetics 1.	
+
+Kinetics 1.	
+
+	Time step: 1.05192e+07 seconds  (Incremented time: 8.41536e+07 seconds)
+
+	Rate name       Delta Moles Total Moles   Reactant        Coefficient
+
+	Quartz           -3.465e-06   1.588e+02   SiO2                      1
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Si                9.441e-05   9.441e-05
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   6.811      Charge balance
+                                       pe  =  11.880      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 0
+                          Density (g/cm³)  =   0.99705
+                               Volume (L)  =   1.00297
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.551e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.217e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.217e-09
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.39
+                               Iterations  =  16
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550641e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   H+              1.545e-07   1.544e-07    -6.811    -6.811    -0.000      0.00
+   OH-             6.558e-08   6.555e-08    -7.183    -7.183    -0.000     -4.14
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+H(0)          0.000e+00
+   H2              0.000e+00   0.000e+00   -40.533   -40.533     0.000     28.61
+O(0)          9.684e-12
+   O2              4.842e-12   4.842e-12   -11.315   -11.315     0.000     30.40
+Si            9.441e-05
+   H4SiO4          9.432e-05   9.432e-05    -4.025    -4.025     0.000     52.08
+   H3SiO4-         9.011e-08   9.007e-08    -7.045    -7.045    -0.000     27.94
+   H2SiO4-2        3.975e-14   3.968e-14   -13.401   -13.401    -0.001     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Chalcedony       -0.47     -4.03   -3.55  SiO2
+  H2(g)           -37.43    -40.53   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  O2(g)            -8.42    -11.31   -2.89  O2
+  Quartz           -0.05     -4.03   -3.98  SiO2
+  SiO2(a)          -1.31     -4.03   -2.71  SiO2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+Reaction step 9.
+
+Using solution 1.	
+Using kinetics 1.	
+
+Kinetics 1.	
+
+	Time step: 1.05192e+07 seconds  (Incremented time: 9.46728e+07 seconds)
+
+	Rate name       Delta Moles Total Moles   Reactant        Coefficient
+
+	Quartz           -2.593e-06   1.588e+02   SiO2                      1
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Si                9.700e-05   9.700e-05
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   6.808      Charge balance
+                                       pe  =  11.883      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 0
+                          Density (g/cm³)  =   0.99705
+                               Volume (L)  =   1.00297
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.563e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.217e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.217e-09
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.39
+                               Iterations  =  16
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550641e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   H+              1.557e-07   1.556e-07    -6.808    -6.808    -0.000      0.00
+   OH-             6.507e-08   6.504e-08    -7.187    -7.187    -0.000     -4.14
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+H(0)          0.000e+00
+   H2              0.000e+00   0.000e+00   -40.532   -40.532     0.000     28.61
+O(0)          9.679e-12
+   O2              4.840e-12   4.840e-12   -11.315   -11.315     0.000     30.40
+Si            9.700e-05
+   H4SiO4          9.691e-05   9.691e-05    -4.014    -4.014     0.000     52.08
+   H3SiO4-         9.186e-08   9.181e-08    -7.037    -7.037    -0.000     27.94
+   H2SiO4-2        4.020e-14   4.013e-14   -13.396   -13.397    -0.001     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Chalcedony       -0.46     -4.01   -3.55  SiO2
+  H2(g)           -37.43    -40.53   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  O2(g)            -8.42    -11.32   -2.89  O2
+  Quartz           -0.03     -4.01   -3.98  SiO2
+  SiO2(a)          -1.30     -4.01   -2.71  SiO2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+Reaction step 10.
+
+Using solution 1.	
+Using kinetics 1.	
+
+Kinetics 1.	
+
+	Time step: 1.05192e+07 seconds  (Incremented time: 1.05192e+08 seconds)
+
+	Rate name       Delta Moles Total Moles   Reactant        Coefficient
+
+	Quartz           -1.940e-06   1.588e+02   SiO2                      1
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Si                9.894e-05   9.894e-05
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   6.805      Charge balance
+                                       pe  =  11.886      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 0
+                          Density (g/cm³)  =   0.99705
+                               Volume (L)  =   1.00297
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.572e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.217e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.217e-09
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.39
+                               Iterations  =  15
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550641e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   H+              1.566e-07   1.565e-07    -6.805    -6.805    -0.000      0.00
+   OH-             6.469e-08   6.466e-08    -7.189    -7.189    -0.000     -4.14
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+H(0)          0.000e+00
+   H2              0.000e+00   0.000e+00   -40.532   -40.532     0.000     28.61
+O(0)          9.673e-12
+   O2              4.836e-12   4.836e-12   -11.315   -11.315     0.000     30.40
+Si            9.894e-05
+   H4SiO4          9.885e-05   9.885e-05    -4.005    -4.005     0.000     52.08
+   H3SiO4-         9.315e-08   9.310e-08    -7.031    -7.031    -0.000     27.94
+   H2SiO4-2        4.053e-14   4.046e-14   -13.392   -13.393    -0.001     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Chalcedony       -0.45     -4.01   -3.55  SiO2
+  H2(g)           -37.43    -40.53   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  O2(g)            -8.42    -11.32   -2.89  O2
+  Quartz           -0.02     -4.01   -3.98  SiO2
+  SiO2(a)          -1.29     -4.01   -2.71  SiO2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+Reaction step 11.
+
+Using solution 1.	
+Using kinetics 1.	
+
+Kinetics 1.	
+
+	Time step: 1.05192e+07 seconds  (Incremented time: 1.15711e+08 seconds)
+
+	Rate name       Delta Moles Total Moles   Reactant        Coefficient
+
+	Quartz           -1.452e-06   1.588e+02   SiO2                      1
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Si                1.004e-04   1.004e-04
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   6.803      Charge balance
+                                       pe  =  11.888      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 0
+                          Density (g/cm³)  =   0.99705
+                               Volume (L)  =   1.00297
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.579e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.217e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.217e-09
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.39
+                               Iterations  =  12
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550642e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   H+              1.573e-07   1.572e-07    -6.803    -6.803    -0.000      0.00
+   OH-             6.441e-08   6.438e-08    -7.191    -7.191    -0.000     -4.14
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+H(0)          0.000e+00
+   H2              0.000e+00   0.000e+00   -40.532   -40.532     0.000     28.61
+O(0)          9.681e-12
+   O2              4.840e-12   4.840e-12   -11.315   -11.315     0.000     30.40
+Si            1.004e-04
+   H4SiO4          1.003e-04   1.003e-04    -3.999    -3.999     0.000     52.08
+   H3SiO4-         9.411e-08   9.406e-08    -7.026    -7.027    -0.000     27.94
+   H2SiO4-2        4.077e-14   4.070e-14   -13.390   -13.390    -0.001     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Chalcedony       -0.45     -4.00   -3.55  SiO2
+  H2(g)           -37.43    -40.53   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  O2(g)            -8.42    -11.32   -2.89  O2
+  Quartz           -0.02     -4.00   -3.98  SiO2
+  SiO2(a)          -1.29     -4.00   -2.71  SiO2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+Reaction step 12.
+
+Using solution 1.	
+Using kinetics 1.	
+
+Kinetics 1.	
+
+	Time step: 1.05192e+07 seconds  (Incremented time: 1.2623e+08 seconds)
+
+	Rate name       Delta Moles Total Moles   Reactant        Coefficient
+
+	Quartz           -1.087e-06   1.588e+02   SiO2                      1
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Si                1.015e-04   1.015e-04
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   6.802      Charge balance
+                                       pe  =  11.889      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 0
+                          Density (g/cm³)  =   0.99705
+                               Volume (L)  =   1.00297
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.584e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.217e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.217e-09
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.38
+                               Iterations  =  12
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550642e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   H+              1.578e-07   1.577e-07    -6.802    -6.802    -0.000      0.00
+   OH-             6.420e-08   6.417e-08    -7.192    -7.193    -0.000     -4.14
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+H(0)          0.000e+00
+   H2              0.000e+00   0.000e+00   -40.532   -40.532     0.000     28.61
+O(0)          9.679e-12
+   O2              4.839e-12   4.839e-12   -11.315   -11.315     0.000     30.40
+Si            1.015e-04
+   H4SiO4          1.014e-04   1.014e-04    -3.994    -3.994     0.000     52.08
+   H3SiO4-         9.482e-08   9.478e-08    -7.023    -7.023    -0.000     27.94
+   H2SiO4-2        4.095e-14   4.087e-14   -13.388   -13.389    -0.001     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Chalcedony       -0.44     -3.99   -3.55  SiO2
+  H2(g)           -37.43    -40.53   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  O2(g)            -8.42    -11.32   -2.89  O2
+  Quartz           -0.01     -3.99   -3.98  SiO2
+  SiO2(a)          -1.28     -3.99   -2.71  SiO2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+Reaction step 13.
+
+Using solution 1.	
+Using kinetics 1.	
+
+Kinetics 1.	
+
+	Time step: 1.05192e+07 seconds  (Incremented time: 1.3675e+08 seconds)
+
+	Rate name       Delta Moles Total Moles   Reactant        Coefficient
+
+	Quartz           -8.133e-07   1.588e+02   SiO2                      1
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Si                1.023e-04   1.023e-04
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   6.801      Charge balance
+                                       pe  =  11.890      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 0
+                          Density (g/cm³)  =   0.99705
+                               Volume (L)  =   1.00297
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.588e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.217e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.217e-09
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.38
+                               Iterations  =  12
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550642e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   H+              1.582e-07   1.581e-07    -6.801    -6.801    -0.000      0.00
+   OH-             6.405e-08   6.402e-08    -7.194    -7.194    -0.000     -4.14
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+H(0)          0.000e+00
+   H2              0.000e+00   0.000e+00   -40.532   -40.532     0.000     28.61
+O(0)          9.677e-12
+   O2              4.839e-12   4.839e-12   -11.315   -11.315     0.000     30.40
+Si            1.023e-04
+   H4SiO4          1.022e-04   1.022e-04    -3.991    -3.991     0.000     52.08
+   H3SiO4-         9.535e-08   9.531e-08    -7.021    -7.021    -0.000     27.94
+   H2SiO4-2        4.108e-14   4.100e-14   -13.386   -13.387    -0.001     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Chalcedony       -0.44     -3.99   -3.55  SiO2
+  H2(g)           -37.43    -40.53   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  O2(g)            -8.42    -11.32   -2.89  O2
+  Quartz           -0.01     -3.99   -3.98  SiO2
+  SiO2(a)          -1.28     -3.99   -2.71  SiO2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+Reaction step 14.
+
+Using solution 1.	
+Using kinetics 1.	
+
+Kinetics 1.	
+
+	Time step: 1.05192e+07 seconds  (Incremented time: 1.47269e+08 seconds)
+
+	Rate name       Delta Moles Total Moles   Reactant        Coefficient
+
+	Quartz           -6.087e-07   1.588e+02   SiO2                      1
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Si                1.029e-04   1.029e-04
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   6.800      Charge balance
+                                       pe  =  11.891      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 0
+                          Density (g/cm³)  =   0.99705
+                               Volume (L)  =   1.00297
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.591e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.217e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.217e-09
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.38
+                               Iterations  =  12
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550642e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   H+              1.585e-07   1.584e-07    -6.800    -6.800    -0.000      0.00
+   OH-             6.393e-08   6.390e-08    -7.194    -7.194    -0.000     -4.14
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+H(0)          0.000e+00
+   H2              0.000e+00   0.000e+00   -40.532   -40.532     0.000     28.61
+O(0)          9.682e-12
+   O2              4.841e-12   4.841e-12   -11.315   -11.315     0.000     30.40
+Si            1.029e-04
+   H4SiO4          1.028e-04   1.028e-04    -3.988    -3.988     0.000     52.08
+   H3SiO4-         9.575e-08   9.570e-08    -7.019    -7.019    -0.000     27.94
+   H2SiO4-2        4.118e-14   4.110e-14   -13.385   -13.386    -0.001     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Chalcedony       -0.44     -3.99   -3.55  SiO2
+  H2(g)           -37.43    -40.53   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  O2(g)            -8.42    -11.32   -2.89  O2
+  Quartz           -0.01     -3.99   -3.98  SiO2
+  SiO2(a)          -1.28     -3.99   -2.71  SiO2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+Reaction step 15.
+
+Using solution 1.	
+Using kinetics 1.	
+
+Kinetics 1.	
+
+	Time step: 1.05192e+07 seconds  (Incremented time: 1.57788e+08 seconds)
+
+	Rate name       Delta Moles Total Moles   Reactant        Coefficient
+
+	Quartz           -4.555e-07   1.588e+02   SiO2                      1
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Si                1.034e-04   1.034e-04
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   6.800      Charge balance
+                                       pe  =  11.892      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 0
+                          Density (g/cm³)  =   0.99705
+                               Volume (L)  =   1.00297
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.593e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.217e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.217e-09
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.38
+                               Iterations  =  12
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550642e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma    cm³/mol
+
+   H+              1.587e-07   1.586e-07    -6.799    -6.800    -0.000      0.00
+   OH-             6.385e-08   6.382e-08    -7.195    -7.195    -0.000     -4.14
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+H(0)          0.000e+00
+   H2              0.000e+00   0.000e+00   -40.533   -40.533     0.000     28.61
+O(0)          9.686e-12
+   O2              4.843e-12   4.843e-12   -11.315   -11.315     0.000     30.40
+Si            1.034e-04
+   H4SiO4          1.033e-04   1.033e-04    -3.986    -3.986     0.000     52.08
+   H3SiO4-         9.604e-08   9.600e-08    -7.018    -7.018    -0.000     27.94
+   H2SiO4-2        4.125e-14   4.117e-14   -13.385   -13.385    -0.001     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Chalcedony       -0.43     -3.99   -3.55  SiO2
+  H2(g)           -37.43    -40.53   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  O2(g)            -8.42    -11.31   -2.89  O2
+  Quartz           -0.01     -3.99   -3.98  SiO2
+  SiO2(a)          -1.27     -3.99   -2.71  SiO2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+------------------
+End of simulation.
+------------------
+
+------------------------------------
+Reading input data for simulation 2.
+------------------------------------
+
+----------------------------------
+End of Run after 0.020086 Seconds.
+----------------------------------
+
