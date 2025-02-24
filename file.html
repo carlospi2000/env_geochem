@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Machine Learning & PHREEQC Setup</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1, h2 { color: #0078D4; }
+        code { background-color: #f4f4f4; padding: 5px; display: block; white-space: pre-wrap; }
+        .note { background: #ffffcc; padding: 10px; border-left: 5px solid #ffcc00; }
+    </style>
+</head>
+<body>
+    <h1>🚀 Azure Machine Learning & PHREEQC Setup Guide</h1>
+    <p>This guide will help you set up JupyterLab in <strong>Azure Machine Learning Studio</strong> and install <strong>PHREEQC</strong>.</p>
+
+    <h2>1️⃣ Create an Azure Education Account</h2>
+    <p>Go to <a href="https://azure.microsoft.com/en-us/free/students/">Azure for Students</a> and sign up with your university email to get <strong>$100 free credits</strong>.</p>
+
+    <h2>2️⃣ Set Up Azure Machine Learning Workspace</h2>
+    <ol>
+        <li>Log in to <a href="https://portal.azure.com">Azure Portal</a>.</li>
+        <li>Search for <strong>Machine Learning</strong> and create a new workspace.</li>
+        <li>Choose <strong>Azure for Students</strong> as your subscription.</li>
+        <li>Set up your resource group and workspace name.</li>
+        <li>Click <strong>Create</strong> and wait for the process to complete.</li>
+    </ol>
+
+    <h2>3️⃣ Launch JupyterLab</h2>
+    <ol>
+        <li>Go to <a href="https://ml.azure.com/">Azure Machine Learning Studio</a>.</li>
+        <li>In the left menu, select <strong>Compute</strong>.</li>
+        <li>Click <strong>New Compute Instance</strong>.</li>
+        <li>Choose VM size: <code>B1s</code> (1 vCPU, 1 GiB RAM) or <code>B2s</code> (recommended).</li>
+        <li>Once the instance starts, click <strong>JupyterLab</strong>.</li>
+    </ol>
+
+    <h2>4️⃣ Install PHREEQC in JupyterLab</h2>
+    <h3>Compile PHREEQC from Source</h3>
+    <p>Open a terminal in JupyterLab and run the following commands:</p>
+    <code>
+cd ~
+wget https://water.usgs.gov/water-resources/software/PHREEQC/phreeqc-3.8.6-17100.tar.gz
+tar -xvzf phreeqc-3.8.6-17100.tar.gz
+cd phreeqc-3.8.6-17100/src
+make
+sudo make install
+    </code>
+    <p>Verify installation:</p>
+    <code>phreeqc --version</code>
+
+    <h2>5️⃣ Run PHREEQC Simulations</h2>
+    <h3>Method 1: Using Python</h3>
+    <code>
+phreeqc.load_database("/usr/share/phreeqc/database/phreeqc.dat")
+input_str = """
+SOLUTION 1
+    pH 7.0
+    units mol/kgw
+    Na 1.0
+    Cl 1.0
+END
+"""
+phreeqc.run_string(input_str)
+print(phreeqc.get_selected_output())
+    </code>
+
+    <h3>Method 2: Using Command Line</h3>
+    <p>Create a PHREEQC input file in JupyterLab:</p>
+    <code>
+SOLUTION 1
+    pH 7.0
+    units mol/kgw
+    Na 1.0
+    Cl 1.0
+END
+    </code>
+    <p>Run PHREEQC in the terminal:</p>
+    <code>
+phreeqc example.phr output.txt /usr/share/phreeqc/database/phreeqc.dat
+cat output.txt
+    </code>
+
+    <h2>🎯 Summary</h2>
+    <ul>
+        <li>Create an Azure Education account.</li>
+        <li>Launch JupyterLab in Azure Machine Learning Studio.</li>
+        <li>Compile PHREEQC from source.</li>
+        <li>Run PHREEQC simulations in Python or via the terminal.</li>
+    </ul>
+
+    <p class="note"><strong>Need help?</strong> Ask your instructor or check the <a href="https://www.usgs.gov/software/phreeqc">PHREEQC documentation</a>.</p>
+</body>
+</html>
