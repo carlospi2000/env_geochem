@@ -1,0 +1,31 @@
+
+SOLUTION 1
+    temp      25         # Temperature in Celsius
+    pH        7.0       # Initial pH of the solution
+    pe        4.0       # Assumed pe value
+    units     mmol/kgw  # Concentrations in mmol/kg water
+    Ca        10        # Calcium concentration
+    Mg        5         # Magnesium concentration
+    Na        50        # Sodium concentration
+    K         5         # Potassium concentration
+    Cl        60        # Chloride concentration
+    S(6)      10        # Sulfate concentration
+    C(4)      2  as CO3  # Carbonate concentration (as total C)
+    
+EQUILIBRIUM_PHASES 1
+    Calcite       0.0  10  # Allow precipitation of CaCO3
+    Gypsum        0.0  10  # Allow precipitation of CaSO4·2H2O
+    Halite        0.0  10  # Allow precipitation of NaCl
+    Sylvite       0.0  10  # Allow precipitation of KCl
+    Bischofite    0.0  10  # Allow precipitation of MgCl2·6H2O
+
+EVAPORATION 1
+    10           # Evaporate 90% of the water (1 = full evaporation, 10 = 90% loss)
+
+SELECTED_OUTPUT
+    -file evaporation_results.txt
+    -step
+    -totals Ca Mg Na K Cl S(6) C(4)
+    -saturation_indices Calcite Gypsum Halite Sylvite Bischofite
+
+END

@@ -1,0 +1,80 @@
+# Azure Machine Learning & PHREEQC Setup Guide
+
+This guide will help you set up JupyterLab in **Azure Machine Learning Studio** and install **PHREEQC**.
+
+## 1️⃣ Create an Azure Education Account
+Go to [Azure for Students](https://azure.microsoft.com/en-us/free/students/) and sign up with your university email to get **$100 free credits**.
+
+## 2️⃣ Set Up Azure Machine Learning Workspace
+1. Log in to [Azure Portal](https://portal.azure.com).
+2. Search for **Machine Learning** and create a new workspace.
+3. Choose **Azure for Students** as your subscription.
+4. Set up your resource group and workspace name.
+5. Click **Create** and wait for the process to complete.
+
+## 3️⃣ Launch JupyterLab
+1. Go to [Azure Machine Learning Studio](https://ml.azure.com/).
+2. In the left menu, select **Compute**.
+3. Click **New Compute Instance**.
+4. Choose VM size: `B1s` (1 vCPU, 1 GiB RAM) or `B2s` (recommended).
+5. Once the instance starts, click **JupyterLab**.
+
+## 4️⃣ Install PHREEQC in JupyterLab
+### Compile PHREEQC from Source
+Open a terminal in JupyterLab and run the following commands:
+
+```sh
+cd ~
+wget https://water.usgs.gov/water-resources/software/PHREEQC/phreeqc-3.8.6-17100.tar.gz
+tar -xvzf phreeqc-3.8.6-17100.tar.gz
+cd phreeqc-3.8.6-17100/src
+make
+sudo make install
+```
+
+Verify installation:
+```sh
+phreeqc --version
+```
+
+## 5️⃣ Run PHREEQC Simulations
+### Method 1: Using Python
+```python
+phreeqc.load_database("/usr/share/phreeqc/database/phreeqc.dat")
+input_str = """
+SOLUTION 1
+    pH 7.0
+    units mol/kgw
+    Na 1.0
+    Cl 1.0
+END
+"""
+phreeqc.run_string(input_str)
+print(phreeqc.get_selected_output())
+```
+
+### Method 2: Using Command Line
+Create a PHREEQC input file in JupyterLab:
+```sh
+SOLUTION 1
+    pH 7.0
+    units mol/kgw
+    Na 1.0
+    Cl 1.0
+END
+```
+
+Run PHREEQC in the terminal:
+```sh
+phreeqc example.phr output.txt /usr/share/phreeqc/database/phreeqc.dat
+cat output.txt
+```
+
+## 🎯 Summary
+- Create an Azure Education account.
+- Launch JupyterLab in Azure Machine Learning Studio.
+- Compile PHREEQC from source.
+- Run PHREEQC simulations in Python or via the terminal.
+
+> **Need help?** Ask your instructor or check the [PHREEQC documentation](https://www.usgs.gov/software/phreeqc).
+

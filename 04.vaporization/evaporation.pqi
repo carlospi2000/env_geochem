@@ -1,0 +1,35 @@
+
+SOLUTION 1
+    temp      25         # Temperature in Celsius
+    pH        7.0        # Assumed pH (adjust if needed)
+    pe        4.0        # Assumed pe (adjust if needed)
+    units     mol/kgw    # Input concentrations in molality (mol/kg water)
+    Na        0.538
+    Cl        0.486
+    S(6)      0.109      # Sulfate (SO4^2-)
+    Mg        0.058
+    Ca        0.024
+    K         0.007
+    C(+4)      0.004      # Bicarbonate
+#    CO3-2       0.000033   # Carbonate
+    Ba        0.0000005  # Barium
+
+
+PHASES
+Magnesite
+    MgCO3 = Mg+2 + CO3-2
+    log_k -7.56  # Solubility constant at 25°C from literature
+    delta_h -22.0 kcal  # Enthalpy of reaction (optional)
+
+REACTION 4
+    H2O  1.0 # Remove 90% of water, simulating evaporation
+    -52.0 moles in 4 steps 
+    
+SELECTED_OUTPUT
+    -file evaporation_results.txt
+    -reset false  # Keeps data from all steps in the output file
+    -step
+    -totals H2O Na Cl S(6) Mg Ca K HCO3 CO3 Ba
+    -saturation_indices Calcite Gypsum Halite Sylvite Barite Magnesite Anhydrite    
+
+END

@@ -1,0 +1,25 @@
+   Input file: phreeqc_input_file.pqi
+  Output file: phreeqc_input_file.pqi
+Database file: /Users/cpinilla/software/phreeqc-3.7.3-15968/database/phreeqc.dat
+
+------------------
+Reading data base.
+------------------
+
+	SOLUTION_MASTER_SPECIES
+	SOLUTION_SPECIES
+	PHASES
+	EXCHANGE_MASTER_SPECIES
+	EXCHANGE_SPECIES
+	SURFACE_MASTER_SPECIES
+	SURFACE_SPECIES
+	RATES
+	END
+------------------------------------
+Reading input data for simulation 1.
+------------------------------------
+
+----------------------------------
+End of Run after 0.005349 Seconds.
+----------------------------------
+
